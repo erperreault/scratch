@@ -56,4 +56,5 @@ def target_mode(character):
 print(f"{target_mode('c')=}")
 print(f"{target_mode('Z')=}")
 print(f"{target_mode('$')=}")
+print(target_mode('\\'))
 print(f"{tv_remote('hello world')=}")
