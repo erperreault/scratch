@@ -1,13 +1,25 @@
 import unittest
-from puzzles.Solution import Solution as target
+from puzzles.EasterEggs import Solution as target
 
 class TestSomething(unittest.TestCase):
 
     def setUp(self):
         self.test_cases = [
             { 
-                'given':    [0, 1], 
+                'given':    [0, 14], 
                 'expected': 0 
+            },
+            { 
+                'given':    [2, 0], 
+                'expected': 0 
+            },
+            { 
+                'given':    [2, 14], 
+                'expected': 105 
+            },
+            { 
+                'given':    [7, 20], 
+                'expected': 137979 
             },
         ]
     
