@@ -1,5 +1,5 @@
 import unittest
-from ..puzzles import puzzle
+from puzzles.Solution import Solution as sc
 
 class TestSomething(unittest.TestCase):
 
@@ -8,7 +8,7 @@ class TestSomething(unittest.TestCase):
         }
     
     def test_success(self):
-        self.assertFalse(self.test_cases)
+        self.assertFalse(sc.Solution(self.test_cases['first'], True))
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
