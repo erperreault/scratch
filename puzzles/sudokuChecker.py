@@ -1,6 +1,6 @@
 import unittest
 
-def valid_solution(board): #board[i][j]
+def sudokuChecker(board): #board[i][j]
     size = 9
     subSize = 3
     correct = list(range(1, size+1))
