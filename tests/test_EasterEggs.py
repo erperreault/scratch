@@ -17,6 +17,10 @@ class TestSomething(unittest.TestCase):
                 'given':    [2, 14], 
                 'expected': 105 
             },
+            { 
+                'given':    [7, 500], 
+                'expected': 1507386560013475 
+            },
         ]
 
         """

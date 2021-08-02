@@ -23,14 +23,19 @@ window is min of eggs,tries. max is tries * window
 """
 
 class Solution:
+
     def solution(self, eggs, tries):
         if eggs == 0 or tries == 0:
             return 0
 
-        if tries == 1:
-            return 1
-        
-        if eggs == 1:
+        elif eggs == 1 or tries == 1:
             return tries
 
-        return sum([1, self.solution(eggs-1, tries-1), self.solution(eggs, tries-1)])
+        sum = tries
+
+        while eggs > 1:
+            sum += tries
+            eggs -= 1
+            tries -= 1
+
+        return sum
