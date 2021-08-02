@@ -1,4 +1,4 @@
 class Solution:
     def solution(self):
         
-        return True
+        return 'solution output'
