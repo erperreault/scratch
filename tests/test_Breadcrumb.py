@@ -25,6 +25,10 @@ class TestSomething(unittest.TestCase):
                 'given':    ['www.very-long-site_name-to-make-a-silly-yet-meaningful-example.com/users/giacomo-sorbi', ' + '], 
                 'expected': '<a href="/">HOME</a> + <a href="/users/">USERS</a> + <span class="active">GIACOMO SORBI</span>'
             },
+            { 
+                'given':    ['https://www.linkedin.com/in/giacomosorbi', ' * '], 
+                'expected': '<a href="/">HOME</a> * <a href="/in/">IN</a> * <span class="active">GIACOMOSORBI</span>'
+            }
         ]
     
     def test_solution(self):
