@@ -31,5 +31,4 @@ def solution_b(data):
 
     return ans
 
-
 print(solution_b(data))
