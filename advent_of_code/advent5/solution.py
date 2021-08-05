@@ -6,24 +6,23 @@ def solution_a(data):
 
     for seat in d:
         print(seat)
-        col = [0,8]
-        row = [0,128]
-        for letter in seat:
+        col = 7
+        col_step = 4
+        row = 127
+        row_step = 64
+        
+        for letter in seat[:7]:
             if letter == 'F':
-                row[1] -= (row[1] - row[0]) / 2
-            elif letter == 'B':
-                row[0] += (row[1] - row[0]) / 2
-            elif letter == 'L':
-                col[1] -= (col[1] - col[0]) / 2
-            elif letter == 'R':
-                col[0] += (col[1] - col[0]) / 2
-        
-        print(f'{row=}, {col=}')
-        row[1] -= 1
-        col[1] -= 1
+                row -= row_step
+            row_step /= 2
+
+        for letter in seat[7:]:
+            if letter == 'L':
+                col -= col_step
+            col_step /= 2
         print(f'{row=}, {col=}')
         
-        seat_num = int(row[1]*8 + col[1])
+        seat_num = int(row*8 + col)
         if seat_num > highest:
             highest = seat_num
 
