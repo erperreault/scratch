@@ -37,6 +37,7 @@ def solution_b(data):
                 trees += 1
 
         ans *= trees
+        
     return ans
 
 

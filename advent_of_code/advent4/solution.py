@@ -36,7 +36,6 @@ def solution_b(data):
     for ps in d:
         ps_fixed = ps.split()
         dicto = dict([ x.split(':') for x in ps_fixed])
-        print(dicto)
         valid = True
         for field in fields:
             if field in dicto and validate(field, dicto[field]):
@@ -50,7 +49,6 @@ def solution_b(data):
     return ans
 
 def validate(field_name, field_data):
-    print(f'{field_name=}, {field_data=}')
     if field_name == 'byr':
         return 1920 <= int(field_data) <= 2002
     elif field_name == 'iyr':
@@ -65,6 +63,7 @@ def validate(field_name, field_data):
         else:
             return False
     elif field_name == 'hcl':
+        # doesn't check if chars are 0-9a-f, just alphanumeric, but still passes! report bug?
         return len(field_data) == 7 and field_data[0] == '#' and field_data[1:].isalnum()
     elif field_name == 'ecl':
         return field_data in ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']
