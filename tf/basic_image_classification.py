@@ -21,18 +21,18 @@ class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
 #print(len(train_labels)) # 60,000 as well
 #print(train_labels) # each label is an int index, ie 9, 0, 0, 3, 0, 5 representing correct label from class_names
 
-"""Here we preprocess the data, this example is just the first image."""
+"""Preprocess the data, this example is just the first image.
 plt.figure()
 plt.imshow(train_images[0])
 plt.colorbar()
 plt.grid(False)
-#plt.show()
+plt.show()"""
 
 """Each pixel holds a value from 0 to 255, which we must reduce to a scale of 0 to 1."""
 train_images = train_images / 255.0
 test_images = test_images / 255.0
 
-"""Display the first 25 images to verify preprocessing."""
+"""Display the first 25 images to verify preprocessing.
 plt.figure(figsize=(10,10))
 for i in range(25):
     plt.subplot(5,5,i+1)
@@ -41,7 +41,7 @@ for i in range(25):
     plt.grid(False)
     plt.imshow(train_images[i], cmap=plt.cm.binary)
     plt.xlabel(class_names[train_labels[i]])
-#plt.show()
+plt.show()"""
 
 """Set up our model with several layers in it.
 Flatten converts each 28x28 2D array into a 784px 1D array.
@@ -132,11 +132,14 @@ def plot_value_array(i, predictions_array, true_label):
   thisplot[predicted_label].set_color('red')
   thisplot[true_label].set_color('blue')
 
-"""Here we'll examine the 0th image and visualize our model's predictions about it."""
-i = 0
-plt.figure(figsize=(6,3))
-plt.subplot(1,2,1)
-plot_image(i, predictions[i], test_labels, test_images)
-plt.subplot(1,2,2)
-plot_value_array(i, predictions[i],  test_labels)
-plt.show()
+"""Examine the 0th & 12th images and visualize our model's predictions about them."""
+def visualize_predictions(i):
+    plt.figure(figsize=(6,3))
+    plt.subplot(1,2,1)
+    plot_image(i, predictions[i], test_labels, test_images)
+    plt.subplot(1,2,2)
+    plot_value_array(i, predictions[i],  test_labels)
+    plt.show()
+
+visualize_predictions(0)
+visualize_predictions(12)
