@@ -132,7 +132,7 @@ def plot_value_array(i, predictions_array, true_label):
   thisplot[predicted_label].set_color('red')
   thisplot[true_label].set_color('blue')
 
-"""Examine the 0th & 12th images and visualize our model's predictions about them."""
+"""Examine the 0th & 12th images and visualize our model's predictions about them.
 def visualize_predictions(i):
     plt.figure(figsize=(6,3))
     plt.subplot(1,2,1)
@@ -142,4 +142,32 @@ def visualize_predictions(i):
     plt.show()
 
 visualize_predictions(0)
-visualize_predictions(12)
+visualize_predictions(12)"""
+
+"""Plot the first X test images, their predicted labels, and the true labels.
+Color correct predictions in blue and incorrect predictions in red.
+
+num_rows = 5
+num_cols = 3
+num_images = num_rows*num_cols
+plt.figure(figsize=(2*2*num_cols, 2*num_rows))
+for i in range(num_images):
+  plt.subplot(num_rows, 2*num_cols, 2*i+1)
+  plot_image(i, predictions[i], test_labels, test_images)
+  plt.subplot(num_rows, 2*num_cols, 2*i+2)
+  plot_value_array(i, predictions[i], test_labels)
+plt.tight_layout()
+plt.show()"""
+
+# Using the trained model on new inputs.
+"""Grab a fresh image from the test dataset and use our model to make a prediction.
+Keras is optimized for batches so we make a batch even for one member.
+"""
+img = test_images[1]
+img = (np.expand_dims(img,0))
+predictions_single = probability_model.predict(img)
+plot_value_array(1, predictions_single[0], test_labels)
+_ = plt.xticks(range(10), class_names, rotation=45)
+#plt.show()
+
+print(f"The model's best guess for this image is: {class_names[np.argmax(predictions[0])]}")
