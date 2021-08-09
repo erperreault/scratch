@@ -75,11 +75,68 @@ So step 1 data is first argument, step 4 uses second argument.
 model.fit(train_images, train_labels, epochs=10)
 
 """Compare performance on training data versus performance on test data.
+If the performance on test data is worse than training data, the model is
+'overfitted' -- this represents a model which has 'memorized' specifics about
+the training data rather than broad characteristics applicable to new data.
 """
 test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2)
 print('\nTest accuracy:', test_acc)
 
-"""If the performance on test data is worse than training data, the model is
-'overfitted' -- this represents a model which has 'memorized' specifics about
-the training data rather than broad characteristics applicable to new data.
+"""Time to make predictions about some images with our newly trained model.
+The model outputs arrays called logits holding probabilities for each possible class.
+Usually these are passed to a normalization function as here.
 """
+probability_model = tf.keras.Sequential([model, 
+                                         tf.keras.layers.Softmax()])
+
+predictions = probability_model.predict(test_images)
+
+"""Each prediction element is an array of 10 numbers representing probabilities
+that that image belongs to each of the 10 classes.
+Print the first predictions for the image in our test data.
+"""
+#print(predictions[0])
+#print(f"The model's best guess for image 1 is: {class_names[np.argmax(predictions[0])]}")
+#print(f"Correct answer: {class_names[test_labels[0]]}")
+
+# Here are some boilerplate functions to graph and visualize all 10 probabilities.
+
+def plot_image(i, predictions_array, true_label, img):
+  true_label, img = true_label[i], img[i]
+  plt.grid(False)
+  plt.xticks([])
+  plt.yticks([])
+
+  plt.imshow(img, cmap=plt.cm.binary)
+
+  predicted_label = np.argmax(predictions_array)
+  if predicted_label == true_label:
+    color = 'blue'
+  else:
+    color = 'red'
+
+  plt.xlabel("{} {:2.0f}% ({})".format(class_names[predicted_label],
+                                100*np.max(predictions_array),
+                                class_names[true_label]),
+                                color=color)
+
+def plot_value_array(i, predictions_array, true_label):
+  true_label = true_label[i]
+  plt.grid(False)
+  plt.xticks(range(10))
+  plt.yticks([])
+  thisplot = plt.bar(range(10), predictions_array, color="#777777")
+  plt.ylim([0, 1])
+  predicted_label = np.argmax(predictions_array)
+
+  thisplot[predicted_label].set_color('red')
+  thisplot[true_label].set_color('blue')
+
+"""Here we'll examine the 0th image and visualize our model's predictions about it."""
+i = 0
+plt.figure(figsize=(6,3))
+plt.subplot(1,2,1)
+plot_image(i, predictions[i], test_labels, test_images)
+plt.subplot(1,2,2)
+plot_value_array(i, predictions[i],  test_labels)
+plt.show()
