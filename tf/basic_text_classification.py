@@ -74,6 +74,26 @@ vectorize_layer = TextVectorization(
     output_mode='int',
     output_sequence_length=sequence_length)
 
-"""Make a text-only dataset (without labels), then call adapt."""
+"""Make a text-only dataset (without labels), then call adapt.
+Be careful to only use training data when calling adapt, never test data --
+using the test set could leak information.
+"""
 train_text = raw_train_ds.map(lambda x, y: x)
 vectorize_layer.adapt(train_text)
+
+"""See a sample of 32 vectorized reviews."""
+def vectorize_text(text, label):
+  text = tf.expand_dims(text, -1)
+  return vectorize_layer(text), label
+
+text_batch, label_batch = next(iter(raw_train_ds))
+first_review, first_label = text_batch[0], label_batch[0]
+print("Review", first_review)
+print("Label", raw_train_ds.class_names[first_label])
+print("Vectorized review", vectorize_text(first_review, first_label))
+
+"""Apply vectorization to training, validation, and test sets."""
+train_ds = raw_train_ds.map(vectorize_text)
+val_ds = raw_val_ds.map(vectorize_text)
+test_ds = raw_test_ds.map(vectorize_text)
+
