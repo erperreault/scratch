@@ -10,11 +10,25 @@ def solution_a(data):
 def solution_b(data):
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
     formatted = [ group.split('\n') for group in data.split('\n\n') ]
-    print(formatted)
     ans = 0
 
-    for group in formatted:
-        pass
+    """Check that a letter is present in all members of a group."""
+    def check_group(group: list, letter: str):
+        for person in group:
+            if letter not in person:
+                return False
+        
+        return True
 
-print(solution_a(data))
-#print(solution_b(data))
+    for group in formatted:
+        total = 0
+        for letter in alphabet:
+            if check_group(group, letter):
+                total += 1
+        
+        ans += total
+                    
+    return ans
+
+#print(solution_a(data))
+print(solution_b(data))
