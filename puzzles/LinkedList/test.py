@@ -17,6 +17,10 @@ class TestSomething(unittest.TestCase):
             'given':    5, 
             'expected': [5,4,3,2,1,0]
             },
+            { 
+            'given':    1, 
+            'expected': [1,0]
+            },
         ]
     
     def test_solution(self):
