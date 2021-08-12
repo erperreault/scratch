@@ -6,8 +6,16 @@ class TestSomething(unittest.TestCase):
     def setUp(self):
         self.test_cases = [
             { 
-                'given':    0, 
-                'expected': 0 
+            'given':    10, 
+            'expected': [10,9,8,7,6,5,4,3,2,1,0]
+            },
+            { 
+            'given':    0, 
+            'expected': [0]
+            },
+            { 
+            'given':    5, 
+            'expected': [5,4,3,2,1,0]
             },
         ]
     
