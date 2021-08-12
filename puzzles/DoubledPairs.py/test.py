@@ -7,14 +7,6 @@ class TestSomething(unittest.TestCase):
         self.test_cases = [
             { 
                 'given':    [1,2,4,16,8,4], 
-                'expected': False
-            },
-            { 
-                'given':    [3,1,3,6], 
-                'expected': False
-            },
-            { 
-                'given':    [4,-2,2,-4], 
                 'expected': True
             },
         ]

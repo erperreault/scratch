@@ -9,11 +9,12 @@ class Solution:
     
     def solution(self, arr):
         """Sort the list once to save time finding lowest member each pass."""
-        arr.sort()
+        a = arr[:]
+        a.sort()
         
-        while arr:
+        while a:
             """Pop lowest, look for double and remove if found."""
-            x = arr.pop(0)
+            x = a.pop(0)
             
             """Work in one direction instead of pivoting at 0."""
             if x >= 0:
@@ -22,8 +23,8 @@ class Solution:
                 y = .5 * x
             
             """Removing each pair lets us run in logN time."""
-            if y in arr:
-                arr.remove(y)
+            if y in a:
+                a.remove(y)
             else:
                 return False
         
@@ -40,8 +41,14 @@ cases = [
     }, {
     'given': [4,-2,2,-4],
     'expected': False 
-    },
+    }
 ]
 
 for case in cases:
-    print(f"{test.solution(case['given'])=} (expected {case['expected']})")
+    given = case['given']
+    expected = case['expected']
+    
+    try:
+        assert(test.solution(given) == expected)
+    except AssertionError:
+        print(f"{given} Test Failed")

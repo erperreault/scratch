@@ -6,7 +6,7 @@ class TestSomething(unittest.TestCase):
     def setUp(self):
         self.test_cases = [
             { 
-                'given':    [0, 1], 
+                'given':    0, 
                 'expected': 0 
             },
         ]
