@@ -1,3 +1,7 @@
+"""Implement binary search of a sorted array of integers.
+Return the index of the target integer if it is present, or else -1 if it is absent.
+"""
+
 class Solution:
     def solution(self, nums: list[int], target: int) -> int:
         low = 0
