@@ -7,19 +7,23 @@ class TestSomething(unittest.TestCase):
         self.test_cases = [
             { 
             'given':    10, 
-            'expected': [10,9,8,7,6,5,4,3,2,1,0]
-            },
-            { 
-            'given':    0, 
-            'expected': [0]
+            'expected': [10,11,12,13,14,15,16,17,18,19]
             },
             { 
             'given':    5, 
-            'expected': [5,4,3,2,1,0]
+            'expected': [5,6,7,8,9]
             },
             { 
             'given':    1, 
-            'expected': [1,0]
+            'expected': [1]
+            },
+            { 
+            'given':    0, 
+            'expected': []
+            },
+            { 
+            'given':    -100, 
+            'expected': []
             },
         ]
     
