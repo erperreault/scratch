@@ -1,3 +1,6 @@
+"""Implement merge sort on an array of integers.
+Variant: implement alphabetical merge sort on an array of strings."""
+
 class Solution:
     def sortArray(self, nums: list[int]) -> list[int]:
         length = len(nums)
