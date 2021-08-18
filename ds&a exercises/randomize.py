@@ -7,7 +7,7 @@ Write a second method, which reads the values of the linked list and returns the
     'Breadth First':  '''Implement breadth-first search on a binary tree.
 Variant: return the level-order traversal of the full tree as an array of arrays.''',
     'Depth First':  '''Implement depth-first search on a binary tree.
-Variant: return the left-right traversal of the full tree as an array of arrays.''',
+Variant: return the in-order traversal of the full tree as an array of arrays.''',
     'Merge Sort':   '''Implement merge sort on an array of integers.
 Variant: implement alphabetical merge sort on an array of strings''',
     'Binary Search': '''Implement binary search of a sorted array of integers.
