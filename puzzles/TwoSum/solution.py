@@ -1,5 +1,10 @@
 class Solution:
     def solution(self, nums: list[int], target: int) -> list[int]:
+        """Sorting approach."""
+        pass
+
+
+    def solution_naive(self, nums: list[int], target: int) -> list[int]:
         """Naive/brute force approach."""
         for i in range(0, len(nums)-1):
             test = target - nums[i]
