@@ -1,6 +1,9 @@
 class Solution:
 
     def solution(self, a: list) -> list:
+        if len(a) == 1:
+            return a
+
         mid = len(a) // 2
 
         a1 = self.solution(a[:mid])
