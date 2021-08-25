@@ -17,7 +17,8 @@ class Solution:
     
     def merge(self, a1, a2):
         new = []
-        i = j = 0
+        i = 0
+        j = 0
         
         while i < len(a1) and j < len(a2):
             if a1[i] < a2[j]:
