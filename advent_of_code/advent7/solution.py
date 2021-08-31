@@ -23,7 +23,7 @@ def solution_a(data):
                     final.append(color)
                     queue.append(color)
 
-    return len(final)
+    return len(set(final))
 
 def solution_b(data):
     pass
