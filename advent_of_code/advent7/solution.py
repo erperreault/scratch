@@ -1,32 +1,31 @@
 from test import data
+import re
 
 def solution_a(data):
-    splitted = data.split('\n')
-    pre_keys = [ r.split('contain')[0].strip() for r in splitted ]
-    keys = [ ' '.join(r.split()[:2]) for r in pre_keys ]
-    pre_vals = [ r.split('contain')[1].strip() for r in splitted ]
-    vals = [ ' '.join(r.split()[1:3]) for r in pre_vals ]
-    x = dict(zip(keys, vals))
+    lines = data.split('\n')
+    color_re = re.compile('([\D]*)bag')
+    colors = [ color_re.findall(line) for line in lines ]
+    outer = [ color[0].strip() for color in colors ]
+    inner = [ color[1:] for color in colors ]
+    clean = []
+    for line in inner:
+        clean.append([ color.strip() for color in line ])
+    d = dict(zip(outer,clean))
+
+    final = []
+
     queue = ['shiny gold']
-    ans = []
-
-
-    #this is currently only catching the first color under the contents for
-    # each bag, thanks to careless splitting
     while queue:
-        test = queue.pop(0)
-        for container in keys:
-            print(f'{container=}, {x[container]=}')
-            if test in x[container]:
-                new = ' '.join(container.split()[:2])
-                print(f'{new=}')
-                queue.append(new)
-                ans.append(new)
+        for i in range(len(queue)):
+            current = queue.pop()
+            for color in d.keys():
+                if current in d[color]:
+                    final.append(color)
+                    queue.append(color)
 
-    return len(set(ans))
+    return len(final)
 
 def solution_b(data):
     pass
 
 print(solution_a(data))
-print(solution_b(data))
