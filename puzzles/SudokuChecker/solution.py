@@ -1,4 +1,4 @@
-class SudokuChecker:
+class Solution:
     def solution(board): #board[i][j]
         size = 9
         subSize = 3

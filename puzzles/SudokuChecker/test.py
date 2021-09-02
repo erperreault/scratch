@@ -1,5 +1,5 @@
 import unittest
-from puzzles.SudokuChecker import SudokuChecker as sc
+from solution import Solution as target
 
 class TestSolution(unittest.TestCase):
 
@@ -27,8 +27,8 @@ class TestSolution(unittest.TestCase):
         }
     
     def test_success(self):
-        self.assertEqual(sc.solution(self.test_cases['first']), True)
-        self.assertEqual(sc.solution(self.test_cases['second']), False)
+        self.assertTrue(target.solution(self.test_cases['first']))
+        self.assertFalse(target.solution(self.test_cases['second']))
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
