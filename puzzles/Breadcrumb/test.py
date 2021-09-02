@@ -1,5 +1,5 @@
 import unittest
-from puzzles.Breadcrumb import Solution as target
+from solution import Solution as target
 
 class TestSomething(unittest.TestCase):
 

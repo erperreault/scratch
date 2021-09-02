@@ -6,9 +6,7 @@ https://www.codewars.com/kata/563fbac924106b8bf7000046/train/python
 
 class Solution:
     def solution(self, url, separator):
-        print(url)
         l = self.cleanup(url)
-        print(l)
         if len(l) > 1:
             solution = '<a href="/">HOME</a>' + separator
         else:
